@@ -1,0 +1,2 @@
+# AnsibleVMWare
+Simple VMWare test
