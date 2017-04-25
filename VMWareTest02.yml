@@ -1,0 +1,22 @@
+---
+# vim: set ft=ansible et ts=2 sw=2:
+#
+# Create a new VM from a template using the new vmware_guest module
+- name: Create virtual machine
+  hosts: vmcreate
+  gather_facts: false
+  connection: local
+  vars:
+    vcenter_hostname: ukrdvmgvc001.dbpoc.uk
+    esxhost: ukrdsesxi001.dbpoc.uk
+    datastore: ukrd_esx_mgmt_data_001
+    network: "DMZ_Internet_Vlan201"
+    vmtemplate: Template-Centos7
+    vmcluster: Reading-Dev-PoC
+    notes: Created by Ansible
+    dumpfacts: False
+  tasks:
+# Task to gather facts from a vSphere cluster only if the system is a VMware guest
+    - vsphere_guest:
+        guest: newvm001
+        vmware_guest_facts: yes
