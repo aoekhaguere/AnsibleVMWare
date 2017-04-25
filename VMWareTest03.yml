@@ -17,14 +17,19 @@
     osid='ubuntu64Guest'
     notes: 'Created by Ansible 03'
     inventory_hostname: 'MyTestAnsible01'
+    vcenter_folder: 'Reading-Dev-PoC'
 
   tasks:
-    - vsphere_guest:
+    - name: create vm (Single Disk)
+      vsphere_guest:
         vcenter_hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
         guest: "{{ inventory_hostname }}"
         state: present
         vm_extra_config:
           notes: "{{ notes }}"
+          folder: "{{ vcenter_folder }}"
         vm_disk:
           disk1:
             size_gb: "{{ disk }}"
@@ -34,12 +39,12 @@
           nic1:
             type: vmxnet3
             network: "{{ network }}"
-            network_type: standard
+            network_type: "standard"
         vm_hardware:
           memory_mb: "{{ memory }}"
           num_cpus: "{{ cpucount }}"
           osid: "{{ osid }}"
-          scsi: paravirtual
+          scsi: "paravirtual"
         esxi:
           datacenter: "{{ datacenter }}"
           hostname: "{{ esxi_host }}"
