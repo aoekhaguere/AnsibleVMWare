@@ -18,5 +18,5 @@
   tasks:
 # Task to gather facts from a vSphere cluster only if the system is a VMware guest
     - vsphere_guest:
-        guest: newvm001
+        guest: RHEL71_POC01
         vmware_guest_facts: yes
