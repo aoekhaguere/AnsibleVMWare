@@ -18,5 +18,9 @@
   tasks:
 # Task to gather facts from a vSphere cluster only if the system is a VMware guest
     - vsphere_guest:
+        validate_certs: False
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}" 
         guest: RHEL71_POC01
         vmware_guest_facts: yes
