@@ -1,0 +1,45 @@
+---
+- hosts: all
+  gather_facts: false
+  connection: local
+  user: remote
+  sudo: true
+
+  vars:
+    vcenter_hostname: 'ukrdvmgvc001.dbpoc.uk'    
+    datacenter: 'Reading-Dev'
+    datastore: 'ukrd_esx_mgmt_data_001'
+    network: 'DMZ_Internet_Vlan201'
+    esxi_host: 'ukrdsesxi001.dbpoc.uk'
+    disk: '10'
+    memory: '256'
+    cpucount: '1'
+    osid='ubuntu64Guest'
+    notes: 'Created by Ansible'
+    inventory_hostname: 'MyTestAnsible01'
+
+  tasks:
+    - vsphere_guest:
+        vcenter_hostname: "{{ vcenter_hostname }}"
+        guest: "{{ inventory_hostname }}"
+        state: present
+        vm_extra_config:
+          notes: "{{ notes }}"
+        vm_disk:
+          disk1:
+            size_gb: "{{ disk }}"
+            type: thin
+            datastore: "{{ datastore }}"
+        vm_nic:
+          nic1:
+            type: vmxnet3
+            network: "{{ network }}"
+            network_type: standard
+        vm_hardware:
+          memory_mb: "{{ memory }}"
+          num_cpus: "{{ cpucount }}"
+          osid: "{{ osid }}"
+          scsi: paravirtual
+        esxi:
+          datacenter: "{{ datacenter }}"
+          hostname: "{{ esxi_host }}"
