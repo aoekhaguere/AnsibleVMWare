@@ -7,13 +7,14 @@
   gather_facts: false
   connection: local
   vars:
-    vcenter_hostname: ukrdvmgvc001.dbpoc.uk
-    esxhost: ukrdsesxi001.dbpoc.uk
-    datastore: ukrd_esx_mgmt_data_001
-    network: "DMZ_Internet_Vlan201"
-    vmtemplate: Template-Centos7
-    vmcluster: Reading-Dev-PoC
-    notes: Created by Ansible
+    vcenter_hostname: 'ukrdvmgvc001.dbpoc.uk'
+    esxihost: 'ukrdsesxi001.dbpoc.uk'
+    datacenter: 'Reading-Dev'
+    datastore: 'ukrd_esx_mgmt_data_001'
+    network: 'DMZ_Internet_Vlan201'
+    vmtemplate: 'Template-Centos7'
+    vmcluster: 'Reading-Dev-PoC'
+    notes: 'Created by Ansible 01'
     dumpfacts: False
   tasks:
     - name: Check for required variables
@@ -31,7 +32,7 @@
         username: "{{ vcenter_user }}"
         password: "{{ vcenter_pass }}"
         esxi_hostname: "{{ esxhost }}"
-        datacenter: BOX
+        datacenter: "{{ datacenter }}"
         name: "{{ name }}"
         template: "{{ vmtemplate }}"
         disk:
@@ -43,7 +44,7 @@
             network: "{{ network }}"
         hardware:
           memory_mb: "{{ vm_memory | default(1024) }}"
-        wait_for_ip_address: True
+        wait_for_ip_address: False
         state: present
       register: newvm
       
