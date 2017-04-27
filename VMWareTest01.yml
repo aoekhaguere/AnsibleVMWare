@@ -31,7 +31,7 @@
         hostname: "{{ vcenter_hostname }}"
         username: "{{ vcenter_user }}"
         password: "{{ vcenter_pass }}"
-        esxi_hostname: "{{ esxhost }}"
+        esxi_hostname: "{{ esxihost }}"
         datacenter: "{{ datacenter }}"
         name: "{{ name }}"
         template: "{{ vmtemplate }}"
