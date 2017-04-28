@@ -4,7 +4,7 @@
 # Create a new VM from a template using the new vmware_guest module
 - name: Create virtual machine
   hosts: all
-  gather_facts: false
+  gather_facts: True
   connection: local
   vars:
     vcenter_hostname: 'ukrdvmgvc001.dbpoc.uk'
