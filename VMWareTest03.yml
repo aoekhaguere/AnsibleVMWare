@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: VMwareTest01
   gather_facts: false
   connection: local
   user: remote
