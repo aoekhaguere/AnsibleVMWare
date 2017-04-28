@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 - hosts: localhost
+=======
+- hosts: VMwareTest01
+>>>>>>> 3538a0472b25ef487e6207abd1441f78636f0586
   connection: local
   gather_facts: True
 

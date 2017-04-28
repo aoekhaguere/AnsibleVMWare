@@ -3,24 +3,24 @@
 #
 # Create a new VM from a template using the new vmware_guest module
 - name: Create virtual machine
-  hosts: vmcreate
-  gather_facts: false
+  hosts: rhel7_64Guest
+  gather_facts: True
   connection: local
   vars:
-    vcenter_hostname: ukrdvmgvc001.dbpoc.uk
-    esxhost: ukrdsesxi001.dbpoc.uk
+    vcenter_hostname: "ukrdvmgvc001.dbpoc.uk"
+    esxhost: "ukrdsesxi001.dbpoc.uk"
     datastore: ukrd_esx_mgmt_data_001
-    network: "DMZ_Internet_Vlan201"
+    network: DMZ_Internet_Vlan201
     vmtemplate: Template-Centos7
     vmcluster: Reading-Dev-PoC
     notes: Created by Ansible
-    dumpfacts: False
+    dumpfacts: True
   tasks:
 # Task to gather facts from a vSphere cluster only if the system is a VMware guest
     - vsphere_guest:
         validate_certs: False
-        hostname: "{{ vcenter_hostname }}"
+        vcenter_hostname: ukrdvmgvc001.dbpoc.uk
         username: "{{ vcenter_user }}"
         password: "{{ vcenter_pass }}" 
-        guest: RHEL71_POC01_4211616d-5248-82d2-324f-8ca242abdace
+        guest: RHEL71_POC01
         vmware_guest_facts: yes

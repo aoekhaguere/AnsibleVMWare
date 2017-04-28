@@ -1,9 +1,8 @@
 ---
-- hosts: all
-  gather_facts: false
+- hosts: localhost
+  gather_facts: True
   connection: local
   user: remote
-  sudo: true
 
   vars:
     vcenter_hostname: 'ukrdvmgvc001.dbpoc.uk'    
@@ -14,10 +13,10 @@
     disk: '10'
     memory: '256'
     cpucount: '1'
-    osid='ubuntu64Guest'
+    osid: 'ubuntu64Guest'
     notes: 'Created by Ansible 03'
     inventory_hostname: 'MyTestAnsible01'
-    vcenter_folder: 'Reading-Dev-PoC'
+    vcenter_folder: 'Reading-Dev'
 
   tasks:
     - name: create vm (Single Disk)
@@ -29,7 +28,7 @@
         state: present
         vm_extra_config:
           notes: "{{ notes }}"
-          folder: "{{ vcenter_folder }}"
+#          folder: "{{ vcenter_folder }}"
         vm_disk:
           disk1:
             size_gb: "{{ disk }}"
