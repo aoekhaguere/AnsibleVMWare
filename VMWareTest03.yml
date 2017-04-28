@@ -14,7 +14,7 @@
     disk: '10'
     memory: '256'
     cpucount: '1'
-    osid='ubuntu64Guest'
+    osid:'ubuntu64Guest'
     notes: 'Created by Ansible 03'
     inventory_hostname: 'MyTestAnsible01'
     vcenter_folder: 'Reading-Dev-PoC'
