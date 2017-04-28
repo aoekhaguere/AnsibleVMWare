@@ -28,7 +28,7 @@
         state: present
         vm_extra_config:
           notes: "{{ notes }}"
-          folder: "{{ vcenter_folder }}"
+#          folder: "{{ vcenter_folder }}"
         vm_disk:
           disk1:
             size_gb: "{{ disk }}"
