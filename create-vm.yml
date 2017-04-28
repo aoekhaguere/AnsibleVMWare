@@ -1,4 +1,4 @@
-- hosts: vmcreate
+- hosts: VMwareTest01
   connection: local
 #  user: root
 #  sudo: false
