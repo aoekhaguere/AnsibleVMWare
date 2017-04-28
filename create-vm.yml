@@ -1,31 +1,28 @@
-- hosts: vmcreate
+- hosts: localhost
   connection: local
-#  user: root
-#  sudo: false
-  gather_facts: false
-  serial: 1
+  gather_facts: True
 
   tasks:
   - vsphere_guest:
       vcenter_hostname: ukrdvmgvc001.dbpoc.uk
-#      username: dbpoc\isibor
-#      password: Integration12
+      username: isibor@dbpoc.uk
+      password: Integration12
       validate_certs: no
       guest: testansible
       state: powered_on
       vm_disk:
         disk1:
-        size_gb: 20
-        type: thin
-        datastore: ukrd_esx_mgmt_data_001
+          size_gb: 20
+          type: thin
+          datastore: ukrd_esx_mgmt_data_001
       vm_nic:
-        nic1:
-        type: vmxnet3
-        network: vm
-        network_type: standard
+         nic1:
+          type: vmxnet3
+          network: vm
+          network_type: standard
       vm_hardware:
-        memory_mb: 4024
-        num_cpus: 2
+        memory_mb: 1024
+        num_cpus: 1
         osid: ubuntu64Guest
         scsi: paravirtual
       esxi:
