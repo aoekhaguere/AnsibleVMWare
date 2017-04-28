@@ -19,8 +19,8 @@
 # Task to gather facts from a vSphere cluster only if the system is a VMware guest
     - vsphere_guest:
         validate_certs: False
-        hostname: "{{ vcenter_hostname }}"
+        hostname: ukrdvmgvc001.dbpoc.uk
         username: "{{ vcenter_user }}"
         password: "{{ vcenter_pass }}" 
-        guest: RHEL71_POC01_4211616d-5248-82d2-324f-8ca242abdace
+        guest: RHEL71_POC01
         vmware_guest_facts: yes
