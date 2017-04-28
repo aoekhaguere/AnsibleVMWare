@@ -3,9 +3,11 @@
 #
 # Create a new VM from a template using the new vmware_guest module
 - name: Create virtual machine
-  hosts: all
+  hosts: localhost
   gather_facts: True
   connection: local
+  user: remote
+  
   vars:
     vcenter_hostname: 'ukrdvmgvc001.dbpoc.uk'
     esxihost: 'ukrdsesxi001.dbpoc.uk'
@@ -15,6 +17,11 @@
     vmtemplate: 'Template-Centos7'
     vmcluster: 'Reading-Dev-PoC'
     notes: 'Created by Ansible 01'
+    vcenter_folder: 'Reading-Dev'
+    disk: '10'
+    memory: '256'
+    cpucount: '1'
+    osid: 'ubuntu64Guest'
     dumpfacts: False
   tasks:
     - name: Check for required variables
@@ -34,21 +41,24 @@
         esxi_hostname: "{{ esxihost }}"
         datacenter: "{{ datacenter }}"
         name: "{{ name }}"
+        state: present
         template: "{{ vmtemplate }}"
+        vm_extra_config:
+          notes: "{{ notes }}"
+ #        folder: "{{ vcenter_folder }}"
         disk:
-          - size_gb: 10
+          - size_gb: "{{ disk }}"
             type: thin
             datastore: "{{ datastore }}"
         nic:
           - type: vmxnet3
             network: "{{ network }}"
+            network_type: "standard"
         hardware:
-          memory_mb: "{{ vm_memory | default(1024) }}"
-        wait_for_ip_address: False
-        state: present
-      register: newvm
-      
-    - name: IP address info
-      debug:
-        msg: "{{ newvm.instance.ipv4 }} {{ name }}"
-
+          memory_mb: "{{ memory | default(1024) }}"
+          num_cpus: "{{ cpucount }}"
+          osid: "{{ osid }}"
+          scsi: "paravirtual"        
+        esxi:
+          datacenter: "{{ datacenter }}"
+          hostname: "{{ esxi_host }}"       
