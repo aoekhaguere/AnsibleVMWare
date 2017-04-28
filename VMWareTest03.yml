@@ -1,5 +1,5 @@
 ---
-- hosts: vmwarecreate
+- hosts: localhost
   gather_facts: True
   connection: local
   user: remote
