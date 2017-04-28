@@ -16,7 +16,7 @@
     osid: 'ubuntu64Guest'
     notes: 'Created by Ansible 03'
     inventory_hostname: 'MyTestAnsible01'
-    vcenter_folder: 'Reading-Dev-PoC'
+    vcenter_folder: 'Reading-Dev'
 
   tasks:
     - name: create vm (Single Disk)
