@@ -1,6 +1,6 @@
 ---
 - hosts: VMwareTest01
-  gather_facts: false
+  gather_facts: True
   connection: local
   user: remote
   sudo: true
