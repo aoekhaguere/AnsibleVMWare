@@ -3,7 +3,6 @@
   gather_facts: True
   connection: local
   user: remote
-  sudo: true
 
   vars:
     vcenter_hostname: 'ukrdvmgvc001.dbpoc.uk'    
