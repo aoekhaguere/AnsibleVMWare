@@ -10,7 +10,7 @@
   
   vars:
     vcenter_hostname: 'ukrdvmgvc001.dbpoc.uk'
-    esxihost: 'ukrdsesxi001.dbpoc.uk'
+    esxi_host: 'ukrdsesxi001.dbpoc.uk'
     datacenter: 'Reading-Dev'
     datastore: 'ukrd_esx_mgmt_data_001'
     network: 'DMZ_Internet_Vlan201'
