@@ -1,3 +1,23 @@
+---
+- hosts: localhost
+  gather_facts: True
+  connection: local
+  user: remote
+
+  vars:
+    vcenter_hostname: 'ukrdvmgvc001.dbpoc.uk'    
+    datacenter: 'Reading-Dev'
+    datastore: 'ukrd_esx_mgmt_data_001'
+    network: 'DMZ_Internet_Vlan201'
+    esxi_host: 'ukrdsesxi001.dbpoc.uk'
+    disk: '10'
+    memory: '256'
+    cpucount: '1'
+    osid: 'ubuntu64Guest'
+    notes: 'Created by Ansible 03'
+    inventory_hostname: 'MyTestAnsible01'
+    vcenter_folder: 'Reading-Dev'
+  tasks:
 - name: Add ESXi Host to VCSA
   local_action:
         module: vmware_host
