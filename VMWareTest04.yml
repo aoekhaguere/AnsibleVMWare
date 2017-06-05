@@ -27,6 +27,6 @@
         datacenter_name: Reading-Dev
         cluster_name: Reading-Dev-PoC
         esxi_hostname: 10.0.5.90
-        esxi_username: root@10.0.5.90
+        esxi_username: root
         esxi_password: Start123
         state: present
