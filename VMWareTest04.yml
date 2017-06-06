@@ -24,9 +24,9 @@
             hostname: ukrdvmgvc001.dbpoc.uk
             username: isibor@dbpoc.uk
             password: Integration12
-            datacenter_name: Reading-Dev
-            cluster_name: Reading-Dev-PoC
-            esxi_hostname: 10.0.5.90
+            datacenter_name: Synergy_Poc
+            cluster_name: Synergy_Poc_Cluster 
+            esxi_hostname: 10.0.5.91
             esxi_username: root
             esxi_password: Start123
             state: present
